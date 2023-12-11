@@ -1,0 +1,70 @@
+.body-view {
+    font-family: "Inter var", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+    margin: 0%;
+    min-width: 1093px;
+    max-width: 1366px;
+    background-color: rgb(241, 241, 255);
+}
+
+.products {
+    width: 250px;
+    height: 300px;
+    margin-left: 235px;
+    margin-top: 70px;
+    margin-right: 125px;
+    font-size: 15px;
+    background: rgba(255, 255, 255);
+    text-align: center;
+    box-shadow: 0px 0px 15px rgb(224, 224, 224);
+    border-radius: 5px;
+    transform: scale(1.5);
+}
+
+.info-products {
+    width: 400px;
+    height: 300px;
+    margin-left: 75px;
+    margin-top: 70px;
+    font-size: 15px;
+    background: rgba(255, 255, 255);
+    text-align: center;
+    box-shadow: 0px 0px 15px rgb(224, 224, 224);
+    border-radius: 5px;
+    transform: scale(1.5);
+}
+
+
+.products:hover {
+    transform: scale(1.6);
+}
+
+.main-view {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.img-product {
+    margin-top: 45px;
+}
+
+.span-buy {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin-top: -3px;
+}
+
+.a-buy {
+    padding: 20px;
+    background: rgb(64, 205, 40);
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 1px 5px;
+}
+
+.titles-product {
+    margin-bottom: 45px;
+    margin-top: 20px;
+}

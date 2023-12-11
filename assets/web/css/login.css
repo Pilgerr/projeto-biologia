@@ -1,0 +1,659 @@
+body {
+  background-color: var(--color-white-background);
+  overflow-x: hidden;
+}
+
+:root {
+  --color-primary: #85C4FF;
+  --color-secondary: #;
+  --color-tertiary: #;
+  --color-white-background: #F6F8FA;
+  --color-black-background: #27323D;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-red: #ff0000;
+  --color-green: #15e38a;
+  --color-container-theme-dark: #1D2932;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Greycliff';
+  src: url('Fontspring-DEMO-greycliffcf-demibold.otf') format(opentype);
+  font-weight: normal;
+  font-style: normal;
+
+  /*
+        Tipos de format()
+        - opentype (otf)
+        - truetype (ttf)
+        - embedded-opentype
+        - truetype-aat (Apple Advanced Typography)
+        - svg
+    */
+}
+
+::-webkit-scrollbar {
+  width: 0.625rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-white-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(175, 226, 255, 0.5);
+  border-radius: 30px;
+}
+
+/* ------------------------------ THEME DARK ------------------------------ */
+
+body.theme-dark {
+  background-color: var(--color-black-background);
+}
+
+.container-father.theme-dark,
+dialog.theme-dark,
+.label-float input.theme-dark,
+.label-float button.theme-dark,
+.label-float label.theme-dark  {
+  background-color: var(--color-container-theme-dark);
+  color: var(--color-white);
+}
+
+span.theme-dark {
+  color: var(--color-white);
+}
+
+/* ------------------------------ RESPONSIVITY ------------------------------ */
+
+@media screen and (max-width: 43.75rem) {
+  .container-theme {
+    margin: 1rem 0 2rem;
+  }
+
+  .container-father {
+    width: 20rem;
+  }
+}
+
+/* ------------------------------ SWITCH THEME BUTTON ------------------------------ */
+
+
+.container-theme {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.container-theme span {
+  font-family: 'Greycliff';
+}
+
+span {
+  font-family: "Inter", Sans-serif;
+  font-size: 0.75rem;
+}
+
+.switch {
+  /* switch */
+  --switch-width: 46px;
+  --switch-height: 24px;
+  --switch-bg: rgb(131, 131, 131);
+  --switch-checked-bg: rgb(0, 218, 80);
+  --switch-offset: calc((var(--switch-height) - var(--circle-diameter)) / 2);
+  --switch-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+  /* circle */
+  --circle-diameter: 18px;
+  --circle-bg: #fff;
+  --circle-shadow: 1px 1px 2px rgba(146, 146, 146, 0.45);
+  --circle-checked-shadow: -1px 1px 2px rgba(163, 163, 163, 0.45);
+  --circle-transition: var(--switch-transition);
+  /* icon */
+  --icon-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
+  --icon-cross-color: var(--switch-bg);
+  --icon-cross-size: 6px;
+  --icon-checkmark-color: var(--switch-checked-bg);
+  --icon-checkmark-size: 10px;
+  /* effect line */
+  --effect-width: calc(var(--circle-diameter) / 2);
+  --effect-height: calc(var(--effect-width) / 2 - 1px);
+  --effect-bg: var(--circle-bg);
+  --effect-border-radius: 1px;
+  --effect-transition: all .2s ease-in-out;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch {
+  display: inline-block;
+}
+
+.switch svg {
+  -webkit-transition: var(--icon-transition);
+  -o-transition: var(--icon-transition);
+  transition: var(--icon-transition);
+  position: absolute;
+  height: auto;
+}
+
+.switch .checkmark {
+  width: var(--icon-checkmark-size);
+  color: var(--icon-checkmark-color);
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.switch .cross {
+  width: var(--icon-cross-size);
+  color: var(--icon-cross-color);
+}
+
+.slider {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: var(--switch-width);
+  height: var(--switch-height);
+  background: var(--switch-bg);
+  border-radius: 999px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  -webkit-transition: var(--switch-transition);
+  -o-transition: var(--switch-transition);
+  transition: var(--switch-transition);
+  cursor: pointer;
+}
+
+.circle {
+  width: var(--circle-diameter);
+  height: var(--circle-diameter);
+  background: var(--circle-bg);
+  border-radius: inherit;
+  -webkit-box-shadow: var(--circle-shadow);
+  box-shadow: var(--circle-shadow);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transition: var(--circle-transition);
+  -o-transition: var(--circle-transition);
+  transition: var(--circle-transition);
+  z-index: 1;
+  position: absolute;
+  left: var(--switch-offset);
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: var(--effect-width);
+  height: var(--effect-height);
+  left: calc(var(--switch-offset) + (var(--effect-width) / 2));
+  background: var(--effect-bg);
+  border-radius: var(--effect-border-radius);
+  -webkit-transition: var(--effect-transition);
+  -o-transition: var(--effect-transition);
+  transition: var(--effect-transition);
+}
+
+/* -------- ACTIONS -------- */
+
+.switch input:checked+.slider {
+  background: var(--switch-checked-bg);
+}
+
+.switch input:checked+.slider .checkmark {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.switch input:checked+.slider .cross {
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.switch input:checked+.slider::before {
+  left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
+}
+
+.switch input:checked+.slider .circle {
+  left: calc(100% - var(--circle-diameter) - var(--switch-offset));
+  -webkit-box-shadow: var(--circle-checked-shadow);
+  box-shadow: var(--circle-checked-shadow);
+}
+
+
+/* ------------------------------ FORM ------------------------------ */
+
+
+.container-father {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  height: auto;
+  background-color: var(--color-white);
+  box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+  width: 25rem;
+  border-radius: 30px;
+  transition: box-shadow 0.7s;
+  padding-bottom: 48px;
+}
+
+.container-father:hover {
+  box-shadow:
+  8.8px 8.8px 2.2px rgba(0, 0, 0, 0.02),
+  18.8px 18.8px 5.3px rgba(0, 0, 0, 0.028),
+  30.3px 30.3px 10px rgba(0, 0, 0, 0.035),
+  43.9px 43.9px 17.9px rgba(0, 0, 0, 0.042),
+  61.5px 61.5px 33.4px rgba(0, 0, 0, 0.05),
+  100px 100px 80px rgba(0, 0, 0, 0.07);
+}
+  
+img {
+  width: 150px;
+}
+
+.container-father form{
+  width: 75%;
+}
+
+.container-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+  
+/* -------- GOOGLE INPUT -------- */
+
+.label-float {
+  position: relative;
+  padding-top: 13px;
+  font-family: "Inter", Sans-serif;
+  display: flex;
+}
+
+.label-float input,
+.label-float select {
+  border: none;
+  border-bottom: 2px solid var(--color-primary);
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1rem;
+  transition: all .1s linear;
+  -webkit-transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  -webkit-appearance: none;
+}
+
+.label-float input:focus,
+.label-float select:focus {
+  border-bottom: 3px solid var(--color-primary);
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+.label-float input::placeholder,
+.label-float select::placeholder {
+  color: transparent;
+}
+
+.label-float label {
+  pointer-events: none;
+  position: absolute;
+  top: calc(50% - 8px);
+  left: 15px;
+  transition: all .1s linear;
+  -webkit-transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  background-color: var(--color-white);
+  padding: 5px;
+  box-sizing: border-box;
+  color: #888888;
+}
+
+
+.label-float input:focus+label,
+.label-float select:focus+label,
+.label-float input:not(:placeholder-shown)+label,
+.label-float select:not(:placeholder-shown)+label{
+  font-size: 13px;
+  top: 0;
+  color: var(--color-primary);
+}
+
+button {
+  border: 0;
+  background-color: var(--color-white);
+}
+
+/* -------- CHECK "REMEMBER ME" -------- */
+
+.check-reminder {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.check-reminder input {
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  border: 0.075rem solid #ececec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .5s;
+  -webkit-appearance: none;
+}
+
+.check-reminder input::after {
+  transition: .5s;
+  font-family: monospace;
+  content: '';
+  color: #7a7a7a;
+  font-size: 0.8rem;
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid #7a7a7a;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+.check-reminder input:checked {
+  transition: .5s;
+}
+
+.check-reminder input:checked::after {
+  transition: .5s;
+  border: solid var(--color-green);
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+/* -------- GOOGLE AND SUBMIT BUTTON -------- */
+
+.container-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+  align-items: center;
+}
+
+.send-button {
+  border: none;
+  border-radius: 1.25rem;
+  padding: 0.625rem;
+  font-size: 1rem;
+  font-family: 'Greycliff';
+  background-color: rgb(133, 196, 255, 0.8);
+  color: var(--color-black);
+  box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+  width: 100%;
+}
+
+.send-button:hover,
+#eye-button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-0.1em);
+  cursor: pointer;
+}
+
+.send-button:active,
+#eye-button:active {
+  transform: translateY(0);
+}
+
+/* -------- REDIRECTS -------- */
+
+.container-redirects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.span-redirect {
+  font-size: 0.75rem;
+  font-family: "Inter", Sans-serif;
+}
+
+.a-redirect {
+  text-decoration: none;
+  color: rgb(97 142 183);
+  cursor: pointer;
+}
+
+.a-redirect:hover {
+  text-decoration: underline;
+}
+
+/* -------- DIALOG OTP -------- */
+
+dialog {
+  border-radius: 1.875rem;
+  border: none;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.container-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28rem;
+}
+
+.container-dialog form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto 0;
+  gap: 2rem;
+  padding: 0px 0px 30px;
+}
+
+dialog img {
+  align-self: end;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+dialog span {
+  font-size: 1rem;
+}
+
+dialog input {
+  width: 80%;
+  height: 30px;
+  border-bottom: 2px solid var(--color-primary);
+  border: 0.5px solid var(--color-primary);
+  border-radius: 0.5rem;
+}
+
+dialog input:focus {
+  border-bottom: 3px solid var(--color-primary);
+  box-shadow: 0 0 0 0;
+  outline: 0;
+}
+
+/* -------- TOAST RETURN -------- */
+
+.container-toast{
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-toast.active{
+    transform: translateX(0%);
+}
+
+.container-toast .toast-content{
+    display: flex;
+    align-items: center;
+}
+
+.toast-content .check{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 25px;
+    background-color: var(--color-green);
+    color: var(--color-white);
+    font-size: 0.8rem;
+    border-radius: 50%;
+}
+
+.toast-content .fa-xmark{
+  background-color: var(--color-red);
+  border-radius: 50%;
+  color: var(--color-white);
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.toast-content .return-message{
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.return-message {
+  gap: 0.5em;
+}
+
+.return-message .text{
+    font-size: 0.8rem;
+    font-weight: 400;;
+    color: #666666;
+}
+
+.return-message .text.text-1{
+    font-weight: 600;
+    color: #333;
+}
+
+.container-toast .close{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.container-toast .close:hover{
+    opacity: 1;
+}
+
+.container-toast .progress{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+}
+
+.container-toast .progress:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-green);
+}
+
+.container-toast .progress.error:before{
+    background-color: var(--color-red);
+}
+
+.progress.active:before{
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100%{
+        right: 100%;
+    }
+}
+
+.container-toast.active ~ button{
+    pointer-events: none;
+}
+
+
+
+#loadingOverlay::backdrop {
+  background-color: var(--color-white)
+}
+
+#loadingOverlay {
+  position: absolute;
+  width: 200px; 
+  height: 4px; 
+  background-color: var(--color-white); 
+  display: none;
+}
+
+#loadingLine {
+  height: 100%;
+  background-color: var(--color-primary);
+  position: absolute;
+  width: 20px; 
+  animation: pingpong 2s linear infinite;
+}
+
+@keyframes pingpong {
+  0% {
+      left: 0;
+  }
+  50% {
+      left: 100%;
+  }
+  100% {
+      left: 0;
+  }
+}
+  
+  

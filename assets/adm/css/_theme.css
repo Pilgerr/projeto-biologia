@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.container {
+    display: flex;
+    background-color: white;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 620px;
+}
+
+.aside {
+    width: 25%;
+    background: #f2f2f2;
+}
+
+.div-aside {
+    background-color: white;
+    margin-top: 10px;
+    height: 50px;
+}
+
+.div-aside:hover {
+    background-color: #dbdbdb;
+    border-left: 6px solid rgb(133, 196, 255);
+}
+
+.logo-image {
+    width: 175px;
+    height: 175px;
+    margin: 75px;
+    /* ajustar para ficar responsivo */
+}
+
+.link-aside {
+    display: flex;
+    min-height: 40px;
+    padding: 12px 12px;
+    color: #3e3e3e;
+    line-height: 1.5;
+    /*esse atributo q preenche a div com o link*/
+}
+
+a {
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(175, 226, 255, 0.5);
+    border-radius: 30px;
+}
