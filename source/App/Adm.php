@@ -6,7 +6,7 @@ use League\Plates\Engine;
 use Source\Models\Product;
 use Source\Models\Provider;
 use Source\Models\Sale;
-use Source\Models\User;
+use Source\Models\Usuario;
 
 class Adm
 {
@@ -14,13 +14,13 @@ class Adm
 
     public function __construct()
     {
-        $user = new User();
+        $user = new Usuario();
 
         if (!isset($_SESSION["user"])) {
             header("location:" . url("app"));
         }
 
-        if (!$user->validateAdmUser($_SESSION["user"]["id"])) {
+        if (!$user->validarUsuarioAdministrador($_SESSION["user"]["id"])) {
             header("location:" . url("app"));
         }
 

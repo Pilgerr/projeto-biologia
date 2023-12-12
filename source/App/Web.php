@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\SMTP;
 use Source\Models\Product;
 use Source\Models\Sale;
 use Source\Models\SaleProduct;
-use Source\Models\User;
+use Source\Models\Usuario;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -103,7 +103,7 @@ class Web
     public function registerUserPost(array $data)
     {
         if (!empty($data)) {
-            $user = new User(
+            $user = new Usuario(
                 $data['register-email'],
                 $data['register-name'],
                 $data['register-phoneNumber'],
@@ -112,7 +112,7 @@ class Web
                 $data['register-document']
             );
 
-            $returnInsert = $user->insertUser();
+            $returnInsert = $user->cadastrarUsuario();
 
             if ($returnInsert == true) {
                 $userJson = [
@@ -238,15 +238,15 @@ class Web
             $remember = false;
         }
 
-        $user = new User();
+        $user = new Usuario();
 
-        $returnValidate = $user->validateUser($email, $password, $remember);
+        $returnValidate = $user->validarUsuario($email, $password, $remember);
 
         if ($returnValidate === 'SUCCESS') {
 
             $id = $_SESSION["user"]["id"];
-            $user = new User();
-            $validate = $user->validateAdmUser($id);
+            $user = new Usuario();
+            $validate = $user->validarUsuarioAdministrador($id);
 
             if ($validate == false) {
                 $userJson = [
@@ -464,7 +464,7 @@ class Web
 
     public function updatePasswordPost(array $data) {
         if (!empty($data) && !empty($_COOKIE['otpVerified'])) {
-            $user = new User(
+            $user = new Usuario(
                 NULL, 
                 NULL, 
                 NULL, 
@@ -481,7 +481,7 @@ class Web
                     "type" => "success",
                     "message" => "Senha alterada com sucesso!"
                 ];
-                $user->validateUser($_COOKIE['otpEmail'],$data['update-password'],true);
+                $user->validarUsuario($_COOKIE['otpEmail'],$data['update-password'],true);
                 unset($_SESSION['otpVerified']);
                 echo json_encode($returnJsonSuccess);
             } else {

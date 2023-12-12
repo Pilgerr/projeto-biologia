@@ -5,7 +5,7 @@ namespace Source\App;
 use Source\Models\Product;
 use Source\Models\Provider;
 use Source\Models\Sale;
-use Source\Models\User;
+use Source\Models\Usuario;
 
 class Api
 {
@@ -28,9 +28,9 @@ class Api
             return;
         }
 
-        $user = new User();
+        $user = new Usuario();
 
-        if (!$user->validateUser($headers["Email"], $headers["Password"], true)) {
+        if (!$user->validarUsuario($headers["Email"], $headers["Password"], true)) {
             $response = [
                 "code" => 401,
                 "type" => "unauthorized",
@@ -57,7 +57,7 @@ class Api
             return;
         }
 
-        $user = new User();
+        $user = new Usuario();
 
         if (!$user->selectUser($headers["Id"])) {
             $response = [
@@ -78,8 +78,8 @@ class Api
         $headers = getallheaders();
 
         if ($headers["Key"] == $key) {
-            $users = new User();
-            echo json_encode($users->selectAllUsers(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            $users = new Usuario();
+            echo json_encode($users->selecionarTodosUsuarios(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         } else {
             $response = [
                 "code" => 400,
@@ -96,7 +96,7 @@ class Api
         $headers = getallheaders();
 
         if (!empty($headers)) {
-            $user = new User(
+            $user = new Usuario(
                 $headers["Email"],
                 $headers["Name"],
                 $headers["PhoneNumber"],
@@ -105,7 +105,7 @@ class Api
                 $headers["Document"],
                 NUll
             );
-            $user->insertUser();
+            $user->cadastrarUsuario();
             $response = [
                 "code" => 200,
                 "type" => "success",
@@ -126,7 +126,7 @@ class Api
     public function updateUser(array $data)
     {
         if (!empty($data)) {
-            $user = new User();
+            $user = new Usuario();
             $user->updatePhotoUser($data["photo"], $data["id"]);
             $response = [
                 "code" => 200,

@@ -3,7 +3,7 @@
 namespace Source\App;
 
 use League\Plates\Engine;
-use Source\Models\User;
+use Source\Models\Usuario;
 
 class App
 {
@@ -41,7 +41,7 @@ class App
                 // se não houve alteração da imagem, manda a imagem que está no cookie
                 $upload = $_SESSION["user"]["photo"];
             }
-            $user = new User(
+            $user = new Usuario(
                 $data['edit-email'], 
                 $data['edit-name'], 
                 $data['edit-phoneNumber'], 
@@ -67,7 +67,7 @@ class App
             return;
 
         } else {
-            $user = new User();
+            $user = new Usuario();
             if (!isset($_SESSION['user']['id'])) {
                 $id = $_COOKIE['userId'];
             } else {
