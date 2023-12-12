@@ -35,10 +35,14 @@ main {
     gap: 30px;
 }
 
-.seres-vivos {
+.seres-vivos, 
+.seres-vivos a{
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
     width: 100%;
     color: var(--color-white);
 }

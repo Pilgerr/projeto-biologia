@@ -17,11 +17,13 @@
                 foreach ($seresVivos as $serVivo) {
                     if ($serVivo->available == "on") { ?>
                         <div class="ser-vivo">
-                            <img src="<?= $serVivo->image ?>" alt="<?= $serVivo->name ?>" width="100px" height="100px" class="img-product">
-                            <h6 class="price-product">R$ <?= $serVivo->price ?></h6>
-                            <div class="div-red-product">
-                                <h6><a href="<?= url("produtos/{$serVivo->id}"); ?>"><?= $serVivo->name ?></a></h6>
-                            </div>
+                            <a href="<?= url("produtos/{$serVivo->id}"); ?>">
+                                <img src="<?= $serVivo->image ?>" alt="<?= $serVivo->name ?>" width="100px" height="100px" class="img-product">
+                                <h6 class="price-product">R$ <?= $serVivo->price ?></h6>
+                                <div class="div-red-product">
+                                    <h6><?= $serVivo->name ?></h6>
+                                </div>
+                            </a>
                         </div>
                     <?php
                     }
