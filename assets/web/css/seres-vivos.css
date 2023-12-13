@@ -38,13 +38,13 @@ main {
 .seres-vivos, 
 .seres-vivos a{
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
     width: 100%;
     color: var(--color-white);
+    text-decoration: none;
 }
 
 .ser-vivo {
@@ -58,6 +58,11 @@ main {
     background: var(--color-background-secondary);
     text-align: center;
     border-bottom: 1px solid var(--color-primary);
+}
+
+.img-ser-vivo {
+    width: auto;
+    height: 100px;
 }
 
 #a-back {

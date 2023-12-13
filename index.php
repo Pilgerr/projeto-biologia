@@ -8,49 +8,36 @@ require __DIR__ . "/vendor/autoload.php";
 use CoffeeCode\Router\Router;
 
 $route = new Router(CONF_URL_BASE, ":");
-//$route = new Router('localhost/acme-tarde', ":"); // Route para localhost
 
-/**
- * Web Routes
- */
+/* Web Routes */
 
 $route->namespace("Source\App");
 $route->get("/", "Web:home");
-$route->get("/sobre", "Web:about");
-$route->get("/contato", "Web:contact");
-$route->get("/produtos", "Web:products");
-$route->get("/entrar", "Web:loginAndRegister");
+$route->get("/fungi", "Web:fungi");
+$route->get("/animal", "Web:animal");
+$route->get("/vegetal", "Web:vegetal");
+$route->get("/protista", "Web:protista");
+$route->get("/monera", "Web:monera");
+$route->get("/fungi/{idSerVivo}", "Web:visualizarSerVivo");
+$route->get("/animal/{idSerVivo}", "Web:visualizarSerVivo");
+$route->get("/vegetal/{idSerVivo}", "Web:visualizarSerVivo");
+$route->get("/protista/{idSerVivo}", "Web:visualizarSerVivo");
+$route->get("/monera/{idSerVivo}", "Web:visualizarSerVivo");
 $route->get("/cadastro-usuario", "Web:registerUser");
 $route->post("/cadastro-usuario", "Web:registerUserPost");
-$route->get("/cadastro-endereco", "Web:registerAddress");
-$route->post("/cadastro-endereco", "Web:registerAddressPost");
 $route->get("/login", "Web:login");
 $route->post("/login", "Web:loginPost");
-$route->get("/produtos/{idProduct}", "Web:viewProduct");
-$route->get("/carrinho", "Web:cart");
-$route->get("/finalizar-venda", "Web:checkout");
-$route->get("/logout", "Web:logout");
-$route->get("/recuperar-senha", "Web:forgotPassword");
-$route->post("/recuperar-senha", "Web:forgotPasswordPost");
-$route->post("/verificar-codigo", "Web:verifyOtp");
-$route->get("/atualizar-senha", "Web:updatePassword");
-$route->post("/atualizar-senha", "Web:updatePasswordPost");
 
-//$route->post("/produtos/{idProduct}","Web:viewProductAdd");
 
-/*
- * App Routs
- */
+/* App Routs */
 
-$route->group("/app"); // agrupa em /app
+$route->group("/app"); 
 $route->get("/", "App:home");
 $route->get("/perfil", "App:profile");
 $route->post("/perfil", "App:profile");
 $route->get("/logout", "App:logout");
 
-/*
- * Adm Routs
- */
+/* Adm Routs */
 
 $route->group("/adm");
 $route->get("/", "Adm:home");
@@ -65,18 +52,14 @@ $route->get("/edicao-fornecedor", "Adm:editProvider");
 $route->post("/edicao-fornecedor", "Adm:editProvider");
 $route->post("/cadastro-venda", "Adm:registerSale");
 
-/*
- * Erros Routes
- */
+/* Erros Routes */
 
 $route->group("error")->namespace("Source\App");
 $route->get("/{errcode}", "Web:error");
 
 $route->dispatch();
 
-/*
- * Error Redirect
- */
+/* Error Redirect */
 
 if ($route->error()) {
     $route->redirect("/error/{$route->error()}");

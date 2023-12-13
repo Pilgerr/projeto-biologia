@@ -17,23 +17,6 @@ CREATE TABLE `USUARIOS` (
                          UNIQUE KEY `CPF_UNIQUE` (`CPF`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- DROP TABLE IF EXISTS `addresses`;
--- CREATE TABLE `addresses` (
---                              `id` int(11) NOT NULL AUTO_INCREMENT,
---                              `street` varchar(45) NOT NULL,
---                              `number` int(11) NOT NULL,
---                              `complement` varchar(45) NOT NULL,
---                              `city` varchar(45) NOT NULL,
---                              `state` char(2) NOT NULL,
---                              `zipCode` varchar(45) NOT NULL,
---                              `idUser` int(11) NOT NULL,
---                              `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
---                              `udated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
---                              PRIMARY KEY SERES_VIVOS(`id`),
---                              KEY `fk_addresses_users_idx` (`idUser`),
---                              CONSTRAINT `fk_addresses_users` FOREIGN KEY (`idUser`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 DROP TABLE IF EXISTS `SERES_VIVOS`;
 CREATE TABLE `SERES_VIVOS` (
                             `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -41,7 +24,7 @@ CREATE TABLE `SERES_VIVOS` (
                             `NOME_POPULAR` varchar(255) NOT NULL,
                             `NOME_CIENTIFICO` varchar(255) NOT NULL,
                             `DESCRICAO_ESPECIE` varchar(255) NULL,
-                            `REINO` char(1) NOT NULL,
+                            `REINO` varchar(255) NOT NULL,
                             `TERRITORIO` varchar(255) NOT NULL,
                             `OBSERVACOES` text NULL,
                             `REGISTRO_LOCALIZACAO` text NULL,
@@ -50,3 +33,10 @@ CREATE TABLE `SERES_VIVOS` (
                             `UPDATED_AT` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
                             PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO SERES_VIVOS (IMAGEM, NOME_POPULAR, NOME_CIENTIFICO, DESCRICAO_ESPECIE, REINO, TERRITORIO, OBSERVACOES, REGISTRO_LOCALIZACAO, REGISTRO_COLECAO_IF_SUL) VALUES 
+('https://i.im.ge/2023/12/13/EEy0rX.agaricus-bisporus.jpg', 'Cogumelo Comestível', 'Agaricus bisporus', 'Espécie de cogumelo comestível', 'fungi', 'Floresta', 'Encontrado em troncos em decomposição', 'Latitude: xx.xxxxx, Longitude: yy.yyyyy', 'Registro 12345'),
+('https://i.im.ge/2023/12/13/EEyhV9.grande-felino.png', 'Leão', 'Panthera leo', 'Grande felino', 'animal', 'Savana', 'Predador de topo', 'Latitude: zz.zzzzz, Longitude: ww.wwwww', 'Registro 67890'),
+('https://i.im.ge/2023/12/13/EEyU6K.rosa-spp.jpg', 'Rosa', 'Rosa spp.', 'Planta ornamental', 'vegetal', 'Jardim', 'Flores utilizadas em arranjos', 'Latitude: aa.aaaaa, Longitude: bb.bbbbb', 'Registro 54321'),
+('https://i.im.ge/2023/12/13/EEyLSF.amoeba-proteus.jpg', 'Amiba', 'Amoeba proteus', 'Protozoário unicelular', 'protista', 'Ambiente aquático', 'Movimento por pseudópodes', 'Latitude: cc.ccccc, Longitude: dd.ddddd', 'Registro 13579'),
+('https://i.im.ge/2023/12/13/EEyDv6.escherichia-coli.jpg', 'Bactéria E. coli', 'Escherichia coli', 'Bactéria comumente encontrada no intestino', 'monera', 'Trato digestivo', 'Importante para a digestão', 'Não aplicável', 'Registro 24680');

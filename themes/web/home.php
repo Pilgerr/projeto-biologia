@@ -12,7 +12,7 @@
         <section class="reinos" id="section-tres-reinos">
             <div class="sub-reinos" id="container-dois-reinos">
                 <div class="reino" id="fungi">
-                    <a href="<?= url("produtos")?>" class="link-reino">
+                    <a href="<?= url("fungi")?>" class="link-reino">
                         <p class="nome-reino">Fungi</p>
                         <div class="imgs">
                             <img src="<?= url("assets/imgs/"); ?>icones_reinos (24).png" alt="Ícone Reino" class="img-fungi">
@@ -21,7 +21,7 @@
                     </a>
                 </div>
                 <div class="reino" id="vegetal">
-                    <a href="#" class="link-reino">
+                    <a href="<?= url("vegetal")?>" class="link-reino">
                         <p class="nome-reino">Vegetal</p>
                         <div class="imgs">
                             <img src="<?= url("assets/imgs/"); ?>icones_reinos (9).png" alt="Ícone Reino" class="img-vegetal">
@@ -40,7 +40,7 @@
             </div>
             <div class="sub-reinos">
                 <div class="reino">
-                    <a href="#" class="link-reino">
+                    <a href="<?= url("animal")?>" class="link-reino">
                         <p class="nome-reino">Animal</p>
                         <div class="imgs">
                             <img src="<?= url("assets/imgs/"); ?>icones_reinos (23).png" alt="Ícone Reino" class="img-animal">
@@ -76,7 +76,7 @@
         </section>
         <section class="reinos">
             <div class="reino">
-                <a href="#" class="link-reino">
+                <a href="<?= url("protista")?>" class="link-reino">
                     <p class="nome-reino">Protista</p>
                     <div class="imgs">
                         <img src="<?= url("assets/imgs/"); ?>icones_reinos (3).png" alt="Ícone Reino" id="img-protista">
@@ -86,7 +86,7 @@
         </section>
         <section class="reinos">
             <div class="reino">
-                <a href="#" class="link-reino">
+                <a href="<?= url("monera")?>" class="link-reino">
                     <p class="nome-reino">Monera</p>
                     <div class="imgs">
                         <img src="<?= url("assets/imgs/"); ?>icones_reinos (1).png" alt="Ícone Reino" class="img-monera">
